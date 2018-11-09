@@ -1,0 +1,315 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin:0;
+	background: white url('../frontImages/background-header.png') repeat-x;
+	font:12px/1.6 Arial;
+}
+ul{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+a{
+	text-decoration:none;
+	color:#464F15;
+	border:0;
+}
+a img{
+	border:none;
+}
+p{
+	text-indent:2em;
+	margin:5px;
+}
+/************** Header ********************************************/
+#header{
+	position:relative;
+	width:760px;
+	height:192px;
+	margin:0 auto;
+	font:14px/1.6 arial;
+}
+
+#header h1{
+	background:transparent url('../frontImages/h1.png') no-repeat bottom left;
+	height:63px;
+	margin:0;
+	padding-top:20px
+}
+
+#header h1 span{
+	display:none;
+}
+
+#header .decoration-1{
+	position:absolute;
+	background-image:url('../frontImages/decoration-1.png');
+	height:60px;
+	width:270px;
+	top:70px;
+	left:160px;
+}
+#header .decoration-2{
+	position:absolute;
+	background-image:url('../frontImages/decoration-2.png');
+	height:127px;
+	width:311px;
+	bottom:30px;
+	right:0px;
+}
+
+#header #topNavigation{
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+#header #topNavigation li{
+	float:left;
+	padding:0 2px;
+}
+
+#header #topNavigation a{
+	display:block;
+	line-height:20px;
+	padding:0 0 0 14px;
+	background:transparent url('../frontImages/top-navi-white.png') no-repeat;
+	float:left;  /*For IE 6 bug*/
+}
+
+#header #topNavigation a span{
+	display:block;
+	padding:0 14px 0 0;
+	background:transparent url('../frontImages/top-navi-white.png') no-repeat right;
+}
+
+#header #topNavigation a:hover{
+	color:white;
+	background:transparent url('../frontImages/top-navi-hover.png') no-repeat;
+}
+
+#header #topNavigation a:hover span{
+	background:transparent url('../frontImages/top-navi-hover.png') no-repeat right;
+}
+
+#header #mainNavigation{
+	position:absolute;
+	color:white;
+	font-weight:bold;
+	top:137px;
+	left:0;
+}
+#header #mainNavigation li{
+	float:left;
+	padding:5px;
+}
+
+#header #mainNavigation a{
+	display:block;
+	line-height:25px;
+	text-decoration:none;
+	padding:0 0 0 14px;
+	color:white;
+	float:left;  /*For IE 6 bug*/
+}
+
+#header #mainNavigation a strong{
+	display:block;
+	padding:0 14px 0 0;
+}
+
+#header #mainNavigation .current a{
+	color:white;
+	background:transparent url('../frontImages/main-navi.png') no-repeat;
+}
+
+#header #mainNavigation .current a strong{
+	color:white;
+	background:transparent url('../frontImages/main-navi.png') no-repeat right;
+}
+
+#header #mainNavigation a:hover{
+	color:white;
+	background:transparent url('../frontImages/main-navi-hover.png') no-repeat;
+}
+
+#header #mainNavigation a:hover strong{
+	background:transparent url('../frontImages/main-navi-hover.png') no-repeat right;
+	color:#464F15;
+}
+
+
+
+/************** Content ********************************************/
+
+#content{
+	width:760px;
+	margin:0 auto;
+}
+
+
+#mainContent{
+	float:right;
+	width:560px;
+}
+
+#content img.imgBook{
+	width:132px;
+	height:150px;
+}
+
+
+
+
+.recommendation h2{
+	padding-top:20px;
+	margin-top:0px;
+	color:#069;
+	border-bottom:1px #DEAF50 solid;
+	font:bold 22px/24px 楷体_GB2312;
+}
+
+.recommendation h3{
+	font:bold 14px/21px 宋体;
+}
+
+.img-left img{
+	float:left;
+	margin-right:10px;
+}
+
+.img-right img{
+	float:right;
+	margin-left:10px;
+}
+
+.multiColumn li{
+	float:left;
+	width:120px;
+	margin:0 10px;
+	text-align:center;
+	display:inline; /*For IE 6 bugs*/
+}
+
+.multiColumn div{
+	padding:5px;
+	border:1px #DFE9AB solid;
+
+}
+
+.multiColumn a:hover{  /* For IE 6 bug */
+	color: #FFF;
+}
+
+.multiColumn a:hover div{
+	border:1px #464F15 solid;
+}
+
+.multiColumn li p{
+	text-indent:0;
+}
+
+/***************************************/
+#sideBar{
+	float:left;
+	width:185px;
+	margin-right:10px;
+	display:inline;/*For IE 6 bug*/
+}
+#sideBar h2{
+	margin:0px;
+	border-bottom:1px dashed #444;
+}
+#sideBar div{
+	margin-top:20px;
+	background:transparent url('../frontImages/sidebox-bottom.png') no-repeat bottom;
+	width:100%;
+}
+
+#sideBar div span{
+	display:block;
+	background:transparent url('../frontImages/sidebox-top.png') no-repeat;
+	padding:10px;
+}
+
+#sideBar ul{
+	padding-top:5px;
+	padding-left:5px;
+}
+#sideBar ul li a{
+	color:#464F15;
+}
+#sideBar ul li a:hover{
+	text-decoration:underline;
+	color:red;
+}
+
+#sideBar a.more{
+	float:right;
+	text-decoration:underline;
+	color:red;
+}
+#sideBar a.more:hover{
+	float:right;
+	color:black;
+	text-decoration:none;
+}
+
+/*******************Footer***************************************/
+#footer{
+	clear:both;
+	height:53px;
+	margin:0;
+	background:transparent url('../frontImages/footer-background.png') repeat-x;
+	text-indent:0px;
+	text-align:center;
+}
+
+#footer p{
+	margin:0px;
+}
+#footer a{
+	color:white;
+}
+#footer .p1{
+	line-height:29px;
+}
+#footer .p2{
+	line-height:30px;
+	background-image:url('../frontImages/footer-background-2.png');
+	background-repeat:no-repeat;
+	width:760px;
+	margin:0 auto;
+	background-position:60px top;
+	color:#888;
+}
+
+/*******page********************/
+.pagination{
+
+	padding-top:5px;
+}
+
+
+.pagination span.first{
+	float:left;
+	padding-left:260px;
+}
+
+
+.pagination span.last{
+	float:left;
+	padding-left:10px;
+}
+.pagination a{
+	float:left;
+	padding-left:10px;
+}
+
+
+.pagination .first{
+
+}

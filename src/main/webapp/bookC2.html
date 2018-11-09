@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- ECharts单文件引入 -->
+    <script type="text/javascript" src="JS/echarts.js"></script>
+    <script type="text/javascript" src="JS/jquery-1.10.2.min.js"></script>
+</head>
+
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="height:400px"></div>
+
+
+<script type="text/javascript">
+
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = echarts.init(document.getElementById('main'));
+            var option = {
+                title : {
+                    text: '书城图书销量统计',
+                    subtext: '按图书类别统计',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                 //   data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'left',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                series : [
+                    {
+                        name:'访问来源',
+                        type:'pie',
+                        radius : '55%',
+                        center: ['50%', '60%'],
+                        // data:[
+                        //     {value:335, name:'直接访问'},
+                        //     {value:310, name:'邮件营销'},
+                        //     {value:234, name:'联盟广告'},
+                        //     {value:135, name:'视频广告'},
+                        //     {value:1548, name:'搜索引擎'}
+                        // ]
+                    }
+                ]
+            };
+
+
+            //调用load函数，用于从后台获得数据并且传给option中的xAxis以及series（这两个用于显示柱状图）
+            load(option);
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+
+            //利用ajax技术从后台获取数据并且给option
+            function load(option){
+                $.ajax({
+                    type : "post",
+                    async : false, //同步执行
+                    url : "booktypecount.do",   //后台处理的servlet路径
+                    data : {},
+                    dataType : "json", //返回数据形式为json
+                    success : function(result) {  //如果ajax成功则后台json返回到result中
+                        alert("hhh");
+                        if (result) {
+                            alert("hhh1212");
+                            //初始化option.legend中的data，就是给option中的legend加入data[]
+                            option.legend.data=[];
+                            for(var i=0;i<result.length;i++){
+                                option.legend.data.push(result[i].bookTypeName);
+                            }
+                            alert("hhh12123");
+                            //初始化option.series[0]中的data
+                            option.series[0].data=[];
+                            for(var i=0;i<result.length;i++){
+                                option.series[0].data.push({
+                                    value: result[i].bookTypeSaledNum,
+                                    name: result[i].bookTypeName
+                                });
+                            }
+                            alert("hhh121234");
+                        }
+                    }
+                });
+            }
+
+
+</script>
+</body>

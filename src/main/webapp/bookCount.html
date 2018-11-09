@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- ECharts单文件引入 -->
+    <script type="text/javascript" src="JS/echarts.js"></script>
+    <script type="text/javascript" src="JS/jquery-1.10.2.min.js"></script>
+</head>
+
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="height:400px"></div>
+
+
+<script type="text/javascript">
+
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = echarts.init(document.getElementById('main'));
+            var option = {
+                tooltip: {
+                    show: true
+                },
+                legend: {
+                    data:['销量']
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        "name":"销量",
+                        "type":"bar",
+
+                    }
+                ]
+            };
+
+
+            //调用load函数，用于从后台获得数据并且传给option中的xAxis以及series（这两个用于显示柱状图）
+            load(option);
+            // 为echarts对象加载数据
+            myChart.setOption(option);
+
+            //利用ajax技术从后台获取数据并且给option
+            function load(option){
+                $.ajax({
+                    type : "post",
+                    async : false, //同步执行
+                    url : "booktypecount.do",   //后台处理的servlet路径
+                    data : {},
+                    dataType : "json", //返回数据形式为json
+                    success : function(result) {  //如果ajax成功则后台json返回到result中
+                        if (result) {
+                            //初始化option.xAxis[0]中的data，就是给option中的xAxis加入data[]
+                            option.xAxis[0].data=[];
+                            for(var i=0;i<result.length;i++){
+                                option.xAxis[0].data.push(result[i].bookTypeName);
+                            }
+                            //初始化option.series[0]中的data
+                            option.series[0].data=[];
+                            for(var i=0;i<result.length;i++){
+                                option.series[0].data.push(result[i].bookTypeSaledNum);
+                            }
+                        }
+                    }
+                });
+            }
+
+
+</script>
+</body>
